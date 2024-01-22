@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Bill Burns">
+    <meta name="description" content="Simple login form">
+    <meta name="keywords" content="form, fieldset, localstorage, Dom manipulation, HTMLElement visibility properties">
+    <title>Super Silly Fake Login Page Demo</title>
+    <!--  Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- local styles  -->
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+  
+    <h1>Welcome to My Super Silly Fake Login Page</h1>
+ 
+    <form name="baseForm" onsubmit="return false">
+    
+      <fieldset id="userType">
+        <legend>Identify Yourself</legend>
+          <button type="button" id="newUserBtn">Click Here if You are New</button>
+          <button type="button" id="existUserBtn">Click Here if You Exist</button>
+      </fieldset>
+      
+      <fieldset id="newUserInfo">
+        <legend>You are new  ... we need your info</legend>
+          <p>nothing in newUserInfo yet</p>
+          <input type="submit" value="Login" onclick="formSubmitEvent()">
+      </fieldset>
+      
+      <fieldset id="existUserLogin">
+        <legend>You exist ... please login</legend>
+          <p>nothing in existUserLogin yet</p>
+      </fieldset>
+      
+    </form>
+
+
+<!-- *** unused boilerplate code (see below) will be removed before final version of file is submitted ***--> 
+
+      <!-- "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & js] (start) -->
+      <!--
+      <form name = "mainForm" ></form>
+      <fieldset id="custInfo">
+      <legend>Customer Information</legend>
+      <label for="custname"> Name:</label> 
+      <input name="custname" id="custname" />
+      <br>
+      <label for="state">State (abbr.):</label>
+      <input name="state" id="state" />
+      <input type="submit" value="Submit" onclick="formSubmitEvent()">   >!-- submit to local js file --<
+      </fieldset>
+      <fieldset id="experience">
+      <legend>transaction accepted</legend>
+      <label for="visitdate">Date of visit:</label>
+      <input name="visitdate" id="visitdate" />
+      <label for="cust2">Customer:</label>
+      <input name="cust2" id="cust2" />
+      </fieldset>
+    </form>
+    -->
+    <!-- "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & js] (end) -->
+  
+    <!-- CSS grid layout example [pairs with css] (start) -->
+    <!--
+    <div class="wrapper">
+      <div class="one">One</div>
+      <div class="two">Two</div>
+      <div class="three">Three</div>
+      <div class="four">Four</div>
+      <div class="five">Five</div>
+      <div class="six">Six</div>
+    </div>
+    -->
+    <!-- CSS grid layout example [pairs with css] (end) -->
+
+    <!-- <form> & <input> elements & attributes (start) -->
+    <!--
+      <input type="" ... >   types: button, checkbox, color, date, email, file, hidden, image, month, number, password, radio, range,
+                                                    reset, search, submit, tel, text, time, url, week
+      < ... required>
+      < ... readonly>
+      < ... disabled>
+      < ... autofocus>
+
+      < ... spellcheck="true" ... >
+      < ... size="" ... >                                                           [ text, search, tel, url, email, & password ]
+      < ... maxlength="" ... > 
+      < ... min="" ... max="" ... > 
+      < ... width="" ... height="" ... >                                   [ image]
+      < ... placeholder="" ... > 
+      < ... step="" ... >                                                          [ number, range, date, datetime-local, month, time & week ]
+
+      <form>              
+        <input list="stuff">
+        <datalist id="stuff">
+          <option value="cool stuff">
+          <option value="stupid stuff">
+          <option value="etc stuff">
+        </datalist>
+      </form>
+    -->
+    <!-- <form> & <input> elements & attributes (end) -->
+      
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
