@@ -1,3 +1,8 @@
+
+ /*
+ this is a new comment to test if repo commit is working correctly  [1:27 am 01/22/24]
+ */
+
 /*
 Prevent DOM manipulation code from executing until the the DOM content is completely loaded (i.e., until the  'DOMContentLoaded' event has occurred). The 'DOMContentLoaded' event is NOT dependent on the loading of images and/or stylesheets.
  */
