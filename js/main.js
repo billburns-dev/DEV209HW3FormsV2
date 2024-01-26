@@ -1,68 +1,74 @@
+// build array of states for use with <select> element
+let states = ["enter name of your state", "AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
 
- /*
- this is a new comment to test if repo commit is working correctly  [1:27 am 01/22/24]
- */
+// build out the select/option drop-down for user to select "state"
+let select = document.getElementById("newUserState");
+for (let i = 0; i <states.length; i++) {
+	let option = document.createElement("option");
+	option.value = states[i];
+	option.text= states[i];
+	select.appendChild(option);
+}
 
 /*
-Prevent DOM manipulation code from executing until the the DOM content is completely loaded (i.e., until the  'DOMContentLoaded' event has occurred). The 'DOMContentLoaded' event is NOT dependent on the loading of images and/or stylesheets.
+Prevent DOM manipulation code from executing until the the DOM content is completely loaded (i.e., until the  'DOMContentLoaded' event has occurred).
  */
-
 document.addEventListener("DOMContentLoaded", function (event) {
-  // initially disable customer info and login sections; fields grayed out & unclickable
-  document.getElementById("newUserInfo").disabled = true;
-  document.getElementById("existUserLogin").disabled = true;
+  // initially disable "add new user" and "existing user login" sections; fields grayed out & unclickable
+  document.getElementById("newUser").disabled = true;
+  document.getElementById("existUser").disabled = true;
 });
 
-document.getElementById("newUserBtn").addEventListener("click", function () {
-  document.getElementById("newUserInfo").disabled = false;
+// for a new user, leave "existing user login" section disabled (fields grayed out & unclickable) and disable "determine user type" section
+function formSubmitNew() {
   document.getElementById("userType").disabled = true;
-});
+  document.getElementById("newUser").disabled = false;
+}
 
-document.getElementById("existUserBtn").addEventListener("click", function () {
-  document.getElementById("existUserLogin").disabled = false;
+// for an existing user, leave "add a new user" section disabled (fields grayed out & unclickable) and disable "determine user type" section
+function formSubmitExist() {
   document.getElementById("userType").disabled = true;
-});
-  
-// *** unused boilerplate code (see below) will removed before final version of file is submitted ***
+  document.getElementById("existUser").disabled = false;
+}
 
-/*
-// "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & html] (start)
-function formSubmitEvent() {
-  let name = document.getElementById("custname").value;
-  let state = document.getElementById("state").value;
-  if (name.length > 2 && state.length > 1) {
-    document.getElementById("experience").disabled = false;
-    document.getElementById("cust2").value = name;
-    document.getElementById("visitdate").value = new Date();
-  }
+// query the new user to input info needed to setup a new account & store it in localStorage
+function addNewUser() {
+  let username1 = document.getElementById("newUserName").value;
+  let password1 = document.getElementById("newUserPassword").value;
+  let city1 = document.getElementById("newUserCity").value;
+  let state1 = document.getElementById("newUserState").value;
+  localStorage.setItem("userNameKey", username1);
+  localStorage.setItem("userPasswordKey", password1);
+  localStorage.setItem("userCityKey", city1);
+  localStorage.setItem("userStateKey", state1);
+  alert("Welcome " +  username1 + "\r\nTo access your account, please login.");
+}
+  // query the existing user to input their username/password and validate against the data stored in localStorage
+function loginExistUser() {
+  let username2 = document.getElementById("existUserName").value;
+  let password2 = document.getElementById("existUserPassword").value;
+  storedUserName = localStorage.getItem("userNameKey");
+  storedUserPassword = localStorage.getItem("userPasswordKey");
+  if (username2 === storedUserName && password2 === storedUserPassword) {
+    
+    // create "Delete my account" button
+    let deleteAcctBtn = document.createElement("button");
+    deleteAcctBtn.id = 'deleteAcctBtn';
+    deleteAcctBtn.textContent = 'Delete my account';
+    document.getElementById("existUser").appendChild(deleteAcctBtn);
+    
+    // acknowledge user's login & provide prompt for the option to delete their account (if so desired)
+    alert("Welcome back " +  username2 + "\r\nTo delete your account, please click the 'Delete my account' button below");
+    
+    // trap deleteAcctBtn being clicked
+    document.getElementById("deleteAcctBtn").addEventListener("click", deleteExistUserAcct);
+  } 
   else {
-    alert("please fill in all fields");
+    alert("Username and/or Password not valid"); 
   }
 }
-// "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & html] (end)
 
-// hiding and disabling HTML elements using JavaScript (start)
-  // html 'element'; change "hidden" property; hide element is '.hidden = true'; default is '.hidden = false'
-  document.getElementById('element').hidden = true;
-  // html 'element'; change "style.display" property; hide element is 'style.display = none'
-  document.getElementById('element').style.display = 'none';
-  // html 'element'; change "style.visibility" property; hide element is 'style.visibility = 'hidden'; default is 'style.visibility = visible'
-  document.getElementById('element').style.visibility = 'hidden';
-  // hiding and disabling HTML elements using JavaScript (end)
-
-/*
-save/retrieve data (strings only) to/from the browser's localstorage;
-data in localstorage still persists AFTER browser closure and does NOT expire
-*\
-// localstage examples (start)
-  // save data to localstorage;   localStorage.setItem(key, value)
-  localStorage.setItem('name', 'Obaseki Nosa');         // key = 'name'  value = 'Obaseki Nosa'
-  // read data from localstorage;   localStorage.getItem(key)
-  let fullName = localStorage.getItem('name');           // fullName = 'Obaseki Nosa'
-  // remove data from localstorage;   localStorage.removeItem(key)
-  localStorage.removeItem('name');                              // removes 'Obaseki Nosa' from the browser's local storage
-  // remove/clear all data from localstorage;   localStorage.clear()
-  localStorage.clear();                                                     // removes all data from the browser's local storage
-// localstage examples (end)
- 
- */
+function deleteExistUserAcct() {  
+localStorage.clear();
+alert("Your account has been deleted ... your loss ... not ours ... loser");
+  }

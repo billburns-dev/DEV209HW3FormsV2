@@ -16,97 +16,43 @@
   </head>
   <body>
   
-  <!-- this is a new comment to test if repo commit is working correctly  [1:27 am 01/22/24] -->
-  
     <h1>Welcome to My Super Silly Fake Login Page</h1>
  
     <form name="baseForm" onsubmit="return false">
-    
+      
+      <!-- user self-identifies as new or existing user by selecting 1 of 2 buttons  -->
       <fieldset id="userType">
         <legend>Identify Yourself</legend>
-          <button type="button" id="newUserBtn">Click Here if You are New</button>
-          <button type="button" id="existUserBtn">Click Here if You Exist</button>
+          <button type="submit" onclick="formSubmitNew()">Click here if you are New</button>
+          <button type="submit" onclick="formSubmitExist()">Click here if you already Exist</button>
       </fieldset>
       
-      <fieldset id="newUserInfo">
+<!-- if user = new, user info is gathered and stored  -->
+      <fieldset id="newUser">
         <legend>You are new  ... we need your info</legend>
-          <p>nothing in newUserInfo yet</p>
-          <input type="submit" value="Login" onclick="formSubmitEvent()">
+          <label for="newUserName">Username:</label>
+          <input type="text" id="newUserName" name="newUserName" placeholder="enter a username here" />
+          <label for="newUserPassword">Password:</label>
+          <input type="password" id="newUserPassword" name="newUserPassword" placeholder="enter a password" />
+          <label for="newUserCity">City:</label>
+          <input type="text" id="newUserCity" name="newUserCity" placeholder="enter name of your city" />
+          <label for="newUserState">State:</label>
+          <select id="newUserState" name="newUserState"></select>
+          
+          <button type="submit" onclick="addNewUser()">Create Account</button>
       </fieldset>
       
-      <fieldset id="existUserLogin">
+<!-- if user = existing, user enters username & password & is validated against the stored user info -->
+      <fieldset id="existUser">
         <legend>You exist ... please login</legend>
-          <p>nothing in existUserLogin yet</p>
+          <label for="existUserName">Username:</label>
+          <input type="text" id="existUserName" name="existUserName" placeholder="enter your username here" />
+          <label for="existUserPassword">Password:</label>
+          <input type="password" id="existUserPassword" name="existUserPassword" placeholder="enter your password" />
+          <button type="submit" onclick="loginExistUser()">Login</button>
       </fieldset>
       
     </form>
-
-
-<!-- *** unused boilerplate code (see below) will be removed before final version of file is submitted ***--> 
-
-      <!-- "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & js] (start) -->
-      <!--
-      <form name = "mainForm" ></form>
-      <fieldset id="custInfo">
-      <legend>Customer Information</legend>
-      <label for="custname"> Name:</label> 
-      <input name="custname" id="custname" />
-      <br>
-      <label for="state">State (abbr.):</label>
-      <input name="state" id="state" />
-      <input type="submit" value="Submit" onclick="formSubmitEvent()">   >!-- submit to local js file --<
-      </fieldset>
-      <fieldset id="experience">
-      <legend>transaction accepted</legend>
-      <label for="visitdate">Date of visit:</label>
-      <input name="visitdate" id="visitdate" />
-      <label for="cust2">Customer:</label>
-      <input name="cust2" id="cust2" />
-      </fieldset>
-    </form>
-    -->
-    <!-- "form with fieldset, legend, inputs, & submit on-click" example [pairs with css & js] (end) -->
-  
-    <!-- CSS grid layout example [pairs with css] (start) -->
-    <!--
-    <div class="wrapper">
-      <div class="one">One</div>
-      <div class="two">Two</div>
-      <div class="three">Three</div>
-      <div class="four">Four</div>
-      <div class="five">Five</div>
-      <div class="six">Six</div>
-    </div>
-    -->
-    <!-- CSS grid layout example [pairs with css] (end) -->
-
-    <!-- <form> & <input> elements & attributes (start) -->
-    <!--
-      <input type="" ... >   types: button, checkbox, color, date, email, file, hidden, image, month, number, password, radio, range,
-                                                    reset, search, submit, tel, text, time, url, week
-      < ... required>
-      < ... readonly>
-      < ... disabled>
-      < ... autofocus>
-
-      < ... spellcheck="true" ... >
-      < ... size="" ... >                                                           [ text, search, tel, url, email, & password ]
-      < ... maxlength="" ... > 
-      < ... min="" ... max="" ... > 
-      < ... width="" ... height="" ... >                                   [ image]
-      < ... placeholder="" ... > 
-      < ... step="" ... >                                                          [ number, range, date, datetime-local, month, time & week ]
-
-      <form>              
-        <input list="stuff">
-        <datalist id="stuff">
-          <option value="cool stuff">
-          <option value="stupid stuff">
-          <option value="etc stuff">
-        </datalist>
-      </form>
-    -->
-    <!-- <form> & <input> elements & attributes (end) -->
       
   <script src="js/main.js"></script>
     
